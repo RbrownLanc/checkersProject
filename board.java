@@ -73,29 +73,37 @@ private static void whiteCheckers()
 {
     ImageIcon whitePlayer = new ImageIcon("whiteChecker.png");
 
-    for(int p = 0;p < 12; p++)
-    {
-        Jbutton whiteChecker = new Jbutton(WhitePlayer);
-    }
+    Jbutton whiteChecker1 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker2 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker3 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker4 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker5 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker6 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker7 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker8 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker9 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker10 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker11 = new Jbutton(WhitePlayer);
+    Jbutton whiteChecker12 = new Jbutton(WhitePlayer);
 
-    for(int c = 5; c < 7; c++)
-    {
-        for (int r = 0;r < 7; r++)
-        {
-            whiteChecker.setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
-            r++;
-        }
-        c++;
-    }
-    for(int c = 6; c < 7; c++)
-    {
-        for (int r = 1;r < 7; r++)
-        {
-            whiteChecker.setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
-            r++;
-        }
-        c++;
-    }
+    whiteChecker1.setBounds(posX[0]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
+    whiteChecker2.setBounds(posX[2]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
+    whiteChecker3.setBounds(posX[4]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
+    whiteChecker4.setBounds(posX[6]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
+    whiteChecker5.setBounds(posX[1]*squareHeight,posY[6]*squareHeight,squareWidth,squareHeight);
+    whiteChecker6.setBounds(posX[3]*squareHeight,posY[6]*squareHeight,squareWidth,squareHeight);
+    whiteChecker7.setBounds(posX[5]*squareHeight,posY[6]*squareHeight,squareWidth,squareHeight);
+    whiteChecker8.setBounds(posX[7]*squareHeight,posY[6]*squareHeight,squareWidth,squareHeight);
+    whiteChecker9.setBounds(posX[0]*squareHeight,posY[7]*squareHeight,squareWidth,squareHeight);
+    whiteChecker10.setBounds(posX[2]*squareHeight,posY[7]*squareHeight,squareWidth,squareHeight);
+    whiteChecker11.setBounds(posX[4]*squareHeight,posY[7]*squareHeight,squareWidth,squareHeight);
+    whiteChecker12.setBounds(posX[6]*squareHeight,posY[7]*squareHeight,squareWidth,squareHeight);
+
+}
+
+public static void whiteMovement()
+{
+    
 }
 
 public static void main(String[] args)
@@ -107,6 +115,8 @@ public static void main(String[] args)
     checker class = new checker();
 
     whiteCheckers();
+
+    WhiteMOvement();
 
     frameSetup();
 }
