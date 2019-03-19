@@ -2,110 +2,85 @@ import java.awt.Graphics;
 import java.awt.*;
 import javax.swing.*;
 
-public class board
+public class board extends JFrame
 {
-        private int numberOfSquares = 8;
-        private int squareHeight = 100;
-        private int squareWidth = squareHeight;
+    private int numberOfSquares = 8;
+    private int squareHeight = 100;
+    private int squareWidth = squareHeight;
 
-        private int winSize = squareHeight * numberOfSquares;
+    private int winSize = squareHeight * numberOfSquares;
 
-        private int posX[] = {0,1,2,3,4,5,6,7};
-        private int posY[] = {0,1,2,3,4,5,6,7};
-    private static void createGUI()
+    private int posX[] = {0,1,2,3,4,5,6,7};
+    private int posY[] = {0,1,2,3,4,5,6,7};
+
+    JButton[] boardbuttons = new JButton[64];
+
+    private int column;
+        
+    void createGUI()
     {
         JFrame frame = new JFrame("Checkers");
 
-        Jpanel gameBoard = new Jpanel("board");
-        Jpanel checkerBoard = new Jpanel("checkerBoard");
+        JPanel gameBoard = new JPanel();
+        gameBoard.setLayout(null);
 
         ImageIcon white = new ImageIcon("empty.png");
         ImageIcon Black = new ImageIcon("empty2.png");
-
-        for(int s = 1; s > 64; s++)
+        
+        for(int s = 0;s < 64;s++)
         {
-            Jbutton bWhite = new Jbutton(white);
+            boardbuttons[s].setIcon(white);
             s++;
-            Jbutton bBlack = new Jbutton(black);
+            boardbuttons[s].setIcon(Black);
         }
+
 
         for(int c = 0; c < 7; c++)
         {
+            column = c * 8;
             //black, white
             for (int r = 0;r < 7; r++)
             {
-                bBlack.setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
+                boardbuttons[r+column].setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
                 r++;
             }
             for (int r = 1;r < 7; r++)
             {
-                bWhite.setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
+                boardbuttons[r+column].setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
                 r++;
             }
             c++;
+            column = c * 8;
             //inverse (white, black)
             for (int r = 0;r < 7; r++)
             {
-                bWhite.setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
+                boardbuttons[r+column].setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
                 r++;
             }
             for (int r = 1;r < 7; r++)
             {
-                bBlack.setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
+                boardbuttons[r+column].setBounds(posX[r]*squareHeight,posY[c]*squareHeight,squareWidth,squareHeight);
                 r++;
             }
         }
     }
 
-    public class checker();
+
+
+    void whiteCheckers()
     {
-        private int locationX;
-        private int locationY;
-        private int loc;
-
-        //0 = selected , 1 = white, 2 = red, 3 = black
-        private int contained;
-
-        private int allLocations[] = 
-        {
-            3,2,3,2,3,2,3,2,
-            2,3,2,3,2,3,2,3,
-            3,2,3,2,3,2,3,2,
-            0,3,0,3,0,3,0,3,
-            3,0,3,0,3,0,3,0,
-            1,3,1,3,1,3,1,3,
-            3,1,3,1,3,1,3,1,
-            1,3,1,3,1,3,1,3,
-        };
-        private int move1;
-        private int move2;
-        private int move3;
-        private int move4;
-
-
-        private int FromX;
-        private int FromY;
-
-        private int blankX;
-        private int blankY;
-    }
-
-    private static void whiteCheckers()
-    {
-        ImageIcon whitePlayer = new ImageIcon("white.png");
-
-        Jbutton whiteChecker1 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker2 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker3 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker4 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker5 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker6 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker7 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker8 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker9 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker10 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker11 = new Jbutton(WhitePlayer);
-        Jbutton whiteChecker12 = new Jbutton(WhitePlayer);
+        JButton whiteChecker1 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker2 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker3 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker4 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker5 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker6 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker7 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker8 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker9 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker10 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker11 = new JButton(new ImageIcon("white.png"));
+        JButton whiteChecker12 = new JButton(new ImageIcon("white.png"));
 
         whiteChecker1.setBounds(posX[0]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
         whiteChecker2.setBounds(posX[2]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
@@ -122,7 +97,7 @@ public class board
 
     }
 
-    public static void whiteMovement()
+    void whiteMovement()
     {
         whiteMovementFunction(whiteChecker1);
         whiteMovementFunction(whiteChecker2);
@@ -139,13 +114,13 @@ public class board
 
         ImageIcon select = new ImageIcon("selected.png");
 
-        Jbutton select1 = new Jbutton(select);
-        Jbutton select2 = new Jbutton(select);
-        Jbutton select3 = new Jbutton(select);
-        Jbutton select4 = new Jbutton(select);
+        JButton select1 = new JButton(select);
+        JButton select2 = new JButton(select);
+        JButton select3 = new JButton(select);
+        JButton select4 = new JButton(select);
     }
 
-    public static void whiteMovementFunction(Jbutton checkerName)
+    void whiteMovementFunction(JButton checkerName)
     {
         //clicking the checker
         checkerName.addListener(new ActionListener()
@@ -199,13 +174,13 @@ public class board
                 locationX = FromX/squareWidth;
                 locationY = locationY  * 8;
                 loc = locationX + locationY;
-                allLocations[loc] == 0;
+                allLocations[loc] = 0;
                 //changes the blank to 1
                 locationY = blankY/squareHeight;
                 locationX = blankX/squareWidth;
                 locationY = locationY  * 8;
                 loc = locationX + locationY;
-                allLocations[loc] == 1;
+                allLocations[loc] = 1;
 
                 contained = null;
                 FromX = null;
@@ -221,12 +196,10 @@ public class board
 
     public static void main(String[] args)
     {
-        board class = new board();
-
         //creates the board
         createGUI();
 
-        checker class = new checker();
+        checker myclass = new checker();
 
         //creates the white checkers
         whiteCheckers();
@@ -238,7 +211,7 @@ public class board
         frameSetup();
     }
 
-    public static void frameSetup()
+    void frameSetup()
     {
         gameboard.add(whiteChecker1);
         gameboard.add(whiteChecker2);
