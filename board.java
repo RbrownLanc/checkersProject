@@ -1,6 +1,5 @@
-import java.awt.Graphics;
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class board extends JFrame
 {
@@ -16,8 +15,37 @@ public class board extends JFrame
     JButton[] boardbuttons = new JButton[64];
 
     private int column;
+
+        private int locationX;
+    private int locationY;
+    private int loc;
+
+    //0 = selected , 1 = white, 2 = red, 3 = black
+    private int contained;
+
+    private int allLocations[] = 
+    {
+        3,2,3,2,3,2,3,2,
+        2,3,2,3,2,3,2,3,
+        3,2,3,2,3,2,3,2,
+        0,3,0,3,0,3,0,3,
+        3,0,3,0,3,0,3,0,
+        1,3,1,3,1,3,1,3,
+        3,1,3,1,3,1,3,1,
+        1,3,1,3,1,3,1,3,
+    };
+    private int move1;
+    private int move2;
+    private int move3;
+    private int move4;
+    
+    private int FromX;
+    private int FromY;
+
+    private int blankX;
+    private int blankY;
         
-    void createGUI()
+    void createGame()
     {
         JFrame frame = new JFrame("Checkers");
 
@@ -63,12 +91,12 @@ public class board extends JFrame
                 r++;
             }
         }
-    }
 
+        frame.add(gameBoard);
+        frame.setSize(winSize,winSize);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
 
-
-    void whiteCheckers()
-    {
         JButton whiteChecker1 = new JButton(new ImageIcon("white.png"));
         JButton whiteChecker2 = new JButton(new ImageIcon("white.png"));
         JButton whiteChecker3 = new JButton(new ImageIcon("white.png"));
@@ -81,6 +109,19 @@ public class board extends JFrame
         JButton whiteChecker10 = new JButton(new ImageIcon("white.png"));
         JButton whiteChecker11 = new JButton(new ImageIcon("white.png"));
         JButton whiteChecker12 = new JButton(new ImageIcon("white.png"));
+
+        gameBoard.add(whiteChecker1);
+        gameBoard.add(whiteChecker2);
+        gameBoard.add(whiteChecker3);
+        gameBoard.add(whiteChecker4);
+        gameBoard.add(whiteChecker5);
+        gameBoard.add(whiteChecker6);
+        gameBoard.add(whiteChecker7);
+        gameBoard.add(whiteChecker8);
+        gameBoard.add(whiteChecker9);
+        gameBoard.add(whiteChecker10);
+        gameBoard.add(whiteChecker11);
+        gameBoard.add(whiteChecker12);
 
         whiteChecker1.setBounds(posX[0]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
         whiteChecker2.setBounds(posX[2]*squareHeight,posY[5]*squareHeight,squareWidth,squareHeight);
@@ -95,10 +136,6 @@ public class board extends JFrame
         whiteChecker11.setBounds(posX[4]*squareHeight,posY[7]*squareHeight,squareWidth,squareHeight);
         whiteChecker12.setBounds(posX[6]*squareHeight,posY[7]*squareHeight,squareWidth,squareHeight);
 
-    }
-
-    void whiteMovement()
-    {
         whiteMovementFunction(whiteChecker1);
         whiteMovementFunction(whiteChecker2);
         whiteMovementFunction(whiteChecker3);
@@ -118,14 +155,20 @@ public class board extends JFrame
         JButton select2 = new JButton(select);
         JButton select3 = new JButton(select);
         JButton select4 = new JButton(select);
+
+        whiteSelect(select1);
+        whiteSelect(select2);
+        whiteSelect(select3);
+        whiteSelect(select4);
     }
 
-    void whiteMovementFunction(JButton checkerName)
+
+    public void whiteMovementFunction(JButton checkerName) 
     {
         //clicking the checker
-        checkerName.addListener(new ActionListener()
+        checkerName.addActionListener(new ActionListener()
         {
-            public void acctionPerformed(ActionEvent e)
+            public void actionPerformed(ActionEvent e)
             {
                 contained = 1;
                 int FromX = checkerName.getlocation().x;
@@ -157,10 +200,15 @@ public class board extends JFrame
             }
         });
 
-        //clicking blank / white space
-        select.addListener(new ActionListener()
+        
+    }
+    
+    public void whiteSelect(JButton select)
+    {
+    //clicking blank / white space
+        select.addActionListener(new ActionListener()
         {
-            public void acctionPerformed(ActionEvent e)
+            public void actionPerformed(ActionEvent e)
             {
                 if (contained > 0)
                 {
@@ -194,42 +242,10 @@ public class board extends JFrame
         });
     }
 
-    public static void main(String[] args)
+    public void main(String[] args)
     {
         //creates the board
-        createGUI();
+        createGame();
 
-        checker myclass = new checker();
-
-        //creates the white checkers
-        whiteCheckers();
-
-        //moves the white checkers
-        WhiteMovement();
-
-        //all frame commands
-        frameSetup();
-    }
-
-    void frameSetup()
-    {
-        gameboard.add(whiteChecker1);
-        gameboard.add(whiteChecker2);
-        gameboard.add(whiteChecker3);
-        gameboard.add(whiteChecker4);
-        gameboard.add(whiteChecker5);
-        gameboard.add(whiteChecker6);
-        gameboard.add(whiteChecker7);
-        gameboard.add(whiteChecker8);
-        gameboard.add(whiteChecker9);
-        gameboard.add(whiteChecker10);
-        gameboard.add(whiteChecker11);
-        gameboard.add(whiteChecker12);
-        gameboard.add(bWhite);
-        gameboard.add(bBlack);
-        frame.add(gameBoard);
-        frame.setSize(winSize,winSize);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 }
